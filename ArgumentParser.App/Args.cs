@@ -169,7 +169,7 @@ namespace ArgumentParser.App
 				else
 					_intArgs.Add(argChar, intArg);
 			}
-			catch (ArgumentOutOfRangeException)
+			catch (IndexOutOfRangeException)
 			{
 				_valid = false;
 				_errorArgumentId = argChar;
@@ -195,7 +195,7 @@ namespace ArgumentParser.App
 				else
 					_stringArgs.Add(argChar, _args[_currentArgument]);
 			}
-			catch (ArgumentOutOfRangeException)
+			catch (IndexOutOfRangeException)
 			{
 				_valid = false;
 				_errorArgumentId = argChar;
