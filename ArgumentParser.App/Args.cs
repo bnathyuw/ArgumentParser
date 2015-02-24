@@ -264,12 +264,7 @@ namespace ArgumentParser.App
 			return message.ToString();
 		}
 
-		private bool FalseIfNull(bool? b)
-		{
-			return b ?? false;
-		}
-
-		private int ZeroIfNull(int? i)
+	    private int ZeroIfNull(int? i)
 		{
 			return i ?? 0;
 		}
@@ -292,10 +287,12 @@ namespace ArgumentParser.App
 
 		public bool GetBoolean(char arg)
 		{
-			return FalseIfNull(_booleanArgs[arg]);
+		    bool value;
+		    _booleanArgs.TryGetValue(arg, out value);
+            return value;
 		}
 
-		public bool Has(char arg)
+	    public bool Has(char arg)
 		{
 			return _argsFound.Contains(arg);
 		}
