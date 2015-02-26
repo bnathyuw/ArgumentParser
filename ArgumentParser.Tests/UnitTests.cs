@@ -152,5 +152,26 @@ namespace ArgumentParser.Tests
 			var error = Assert.Throws<Exception>(() => arg.ErrorMessage());
 			Assert.That(error.Message, Is.EqualTo("TILT : Should not get here."));
 		}
+
+        [Test]
+		public void Should_return_false_if_asking_for_non_existant_boolean_argument()
+		{
+			var arg = new Args("a", _emptyArgs);
+		    Assert.False(arg.GetBoolean('b'));
+        }
+
+        [Test]
+		public void Should_return_empty_string_if_asking_for_non_existant_string_argument()
+		{
+			var arg = new Args("a*", _emptyArgs);
+		    Assert.That(arg.GetString('b'), Is.EqualTo(String.Empty));
+        }  
+        
+        [Test]
+		public void Should_return_0_if_asking_for_non_existant_int_argument()
+		{
+			var arg = new Args("a#", _emptyArgs);
+		    Assert.That(arg.GetInt('b'), Is.EqualTo(0));
+        }
 	}
 }

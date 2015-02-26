@@ -264,38 +264,33 @@ namespace ArgumentParser.App
 			return message.ToString();
 		}
 
-		private bool FalseIfNull(bool? b)
-		{
-			return b ?? false;
-		}
+	    public string GetString(char arg)
+	    {
+	        try
+	        {
+	            return _stringArgs[arg];
+	        }
+	        catch (Exception)
+	        {
+	            return string.Empty;
+	        }
+	    }
 
-		private int ZeroIfNull(int? i)
-		{
-			return i ?? 0;
-		}
-
-
-		private string BlankIfNull(string s)
-		{
-			return s ?? "";
-		}
-
-		public string GetString(char arg)
-		{
-			return BlankIfNull(_stringArgs[arg]);
-		}
-
-		public int GetInt(char arg)
-		{
-			return ZeroIfNull(_intArgs[arg]);
-		}
+	    public int GetInt(char arg)
+	    {
+	        int value;
+	        _intArgs.TryGetValue(arg, out value);
+	        return value;
+	    }
 
 		public bool GetBoolean(char arg)
 		{
-			return FalseIfNull(_booleanArgs[arg]);
+		    bool value;
+		    _booleanArgs.TryGetValue(arg, out value);
+            return value;
 		}
 
-		public bool Has(char arg)
+	    public bool Has(char arg)
 		{
 			return _argsFound.Contains(arg);
 		}
