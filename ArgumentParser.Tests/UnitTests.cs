@@ -173,5 +173,26 @@ namespace ArgumentParser.Tests
 			var arg = new Args("a#", _emptyArgs);
 		    Assert.That(arg.GetInt('b'), Is.EqualTo(0));
         }
+
+        [Test]
+		public void Should_return_false_if_checking_whether_non_existant_boolean_argument_exists()
+		{
+			var arg = new Args("a", _emptyArgs);
+            Assert.False(arg.IsBooleanArg('b'));
+        }
+
+        [Test]
+        public void Should_return_false_if_checking_whether_non_existant_string_argument_exists()
+        {
+            var arg = new Args("a*", _emptyArgs);
+            Assert.False(arg.IsStringArg('b'));
+        }  
+        
+        [Test]
+        public void Should_return_false_if_checking_whether_non_existant_int_argument_exists()
+        {
+            var arg = new Args("a#", _emptyArgs);
+            Assert.False(arg.IsIntArg('b'));
+        }
 	}
 }

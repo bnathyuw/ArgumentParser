@@ -152,7 +152,7 @@ namespace ArgumentParser.App
 			return true;
 		}
 
-		private bool IsIntArg(char argChar)
+		public bool IsIntArg(char argChar)
 		{
 			return _intArgs.ContainsKey(argChar);
 		}
@@ -204,7 +204,7 @@ namespace ArgumentParser.App
 			}
 		}
 
-		private bool IsStringArg(char argChar)
+		public bool IsStringArg(char argChar)
 		{
 			return _stringArgs.ContainsKey(argChar);
 		}
@@ -217,7 +217,7 @@ namespace ArgumentParser.App
 				_booleanArgs.Add(argChar, value);
 		}
 
-		private bool IsBooleanArg(char argChar)
+		public bool IsBooleanArg(char argChar)
 		{
 			return _booleanArgs.ContainsKey(argChar);
 		}
